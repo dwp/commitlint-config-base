@@ -1,0 +1,12 @@
+.executor-shell: &executor-shell
+    tags:
+        - shell
+
+stages:
+    - setup
+
+nvm:
+    stage: setup
+    <<: *executor-shell
+    script:
+        - nvm install
