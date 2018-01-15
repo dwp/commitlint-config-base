@@ -1,0 +1,25 @@
+{
+    "name": "@dwp/commitlint-config-base",
+    "version": "1.0.0",
+    "author": "Adam Moss",
+    "license": "ISC",
+    "description": "base configuration for commitlint",
+    "keywords": [
+        "config",
+        "shareable-config",
+        "commitlint",
+        "lint"
+    ],
+    "homepage": "https://github.com/dwp/commitlint-config-base",
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com:dwp/commitlint-config-base.git"
+    },
+    "bugs": {
+        "url": "https://github.com/dwp/commitlint-config-base/issues"
+    },
+    "main": "",
+    "scripts": {},
+    "dependencies": {},
+    "devDependencies": {}
+}
