@@ -18,8 +18,35 @@
     "bugs": {
         "url": "https://github.com/dwp/commitlint-config-base/issues"
     },
-    "main": "",
-    "scripts": {},
-    "dependencies": {},
-    "devDependencies": {}
+    "files": [
+        "src/**"
+    ],
+    "main": "src/index.js",
+    "scripts": {
+        "precommit": "lint-staged",
+        "commitmsg": "commitlint --edit",
+        "test": "npm run pipeline",
+        "pipeline": "npm run compliance-tests && npm run unit-tests && npm run quality-tests",
+        "compliance-tests": "npm run compliance:commitlint && npm run compliance:eslint",
+        "compliance:commitlint": "commitlint --from=develop --to=HEAD",
+        "compliance:eslint": "eslint --ignore-path .gitignore .",
+        "unit-tests": "npm run unit:test",
+        "unit:test": "nyc --report-dir .coverage/unit jasmine JASMINE_CONFIG_PATH=tests/unit/support/jasmine.json",
+        "quality-tests": "npm run quality:sonarjs",
+        "quality:sonarjs": "sonarjs",
+        "quality:sonar-scanner": "sonar-scanner"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "6.0.2",
+        "@dwp/eslint-config-base": "1.0.0",
+        "@dwp/eslint-config-jasmine": "1.0.0",
+        "@dwp/nyc-config-base": "1.0.0",
+        "eslint": "4.15.0",
+        "husky": "0.14.3",
+        "jasmine": "2.8.0",
+        "jasmine-spec-reporter": "4.2.1",
+        "lint-staged": "6.0.0",
+        "nyc": "11.4.1",
+        "sonarjs": "1.0.0"
+    }
 }

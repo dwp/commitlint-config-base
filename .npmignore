@@ -1,0 +1,6 @@
+.sonarlint
+.nyc_output
+.coverage
+.scannerwork
+sonarlint.json
+sonar-project.properties

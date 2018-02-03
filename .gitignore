@@ -1,2 +1,7 @@
 .DS_Store
-
+node_modules
+.sonarlint
+.nyc_output
+.coverage
+.scannerwork
+dwp-commitlint-config-base-*.tgz

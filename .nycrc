@@ -1,0 +1,3 @@
+{
+    "extends": "@dwp/nyc-config-base"
+}
