@@ -30,8 +30,9 @@
         "compliance-tests": "npm run compliance:commitlint && npm run compliance:eslint",
         "compliance:commitlint": "commitlint --from=develop --to=HEAD",
         "compliance:eslint": "eslint --ignore-path .gitignore .",
-        "security-tests": "npm run security:outdated",
+        "security-tests": "npm run security:outdated && npm run security:nsp",
         "security:outdated": "npm outdated || true",
+        "security:nsp": "nsp check #",
         "unit-tests": "npm run unit:test",
         "unit:test": "nyc --report-dir .coverage/unit jasmine JASMINE_CONFIG_PATH=tests/unit/support/jasmine.json",
         "quality-tests": "npm run quality:sonarjs",
@@ -48,6 +49,7 @@
         "jasmine": "2.8.0",
         "jasmine-spec-reporter": "4.2.1",
         "lint-staged": "6.0.0",
+        "nsp": "3.1.0",
         "nyc": "11.4.1",
         "sonarjs": "1.0.0"
     }

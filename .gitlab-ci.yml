@@ -105,6 +105,13 @@ outdated:
         - npm outdated
     allow_failure: true
 
+nsp:
+    stage: security-tests
+    <<: *executor-shell
+    <<: *nvm-use
+    script:
+        - npm run security:nsp
+
 unit:
     stage: unit-tests
     <<: *executor-shell
