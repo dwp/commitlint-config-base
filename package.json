@@ -33,6 +33,7 @@
         "security-tests": "npm run security:outdated && npm run security:nsp",
         "security:outdated": "npm outdated || true",
         "security:nsp": "nsp check #",
+        "security:snyk": "snyk test -dev",
         "unit-tests": "npm run unit:test",
         "unit:test": "nyc --report-dir .coverage/unit jasmine JASMINE_CONFIG_PATH=tests/unit/support/jasmine.json",
         "quality-tests": "npm run quality:sonarjs",
@@ -51,6 +52,7 @@
         "lint-staged": "6.0.0",
         "nsp": "3.1.0",
         "nyc": "11.4.1",
+        "snyk": "1.68.0",
         "sonarjs": "1.0.0"
     }
 }
