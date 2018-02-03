@@ -1,3 +1,4 @@
 {
-    "*.js": "eslint"
+    "*.js": "eslint",
+    "package.json": "security:outdated"
 }

@@ -32,6 +32,7 @@ stages:
     - setup
     - build
     - compliance-tests
+    - security-tests
     - unit-tests
     - quality-tests
 
@@ -94,6 +95,15 @@ eslint:
     <<: *dependency-npm
     script:
         - npm run compliance:eslint
+
+outdated:
+    stage: security-tests
+    <<: *executor-shell
+    <<: *nvm-use
+    <<: *dependency-npm
+    script:
+        - npm outdated
+    allow_failure: true
 
 unit:
     stage: unit-tests
