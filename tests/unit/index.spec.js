@@ -58,9 +58,9 @@ describe('@dwp/commitlint-config-base', () => {
       describe('header-max-length', () => {
         const rule = commitlintConfig.rules['header-max-length'];
 
-        it('should be an error', () => {
-          expect(rule[0]).toEqual(2);
-        });
+                it('should be an warning', () => {
+                    expect(rule[0]).toEqual(1);
+                });
 
         it('should be enabled', () => {
           expect(rule[1]).toEqual('always');
