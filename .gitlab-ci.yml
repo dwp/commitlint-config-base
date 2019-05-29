@@ -1,122 +1,65 @@
-.executor-shell: &executor-shell
+.executor-docker: &executor-docker
     tags:
-        - shell
-
-.nvm-use: &nvm-use
-    before_script:
-        - nvm use
-
-.dependency-npm: &dependency-npm
-    dependencies:
-        - npm
-
-.dependency-unit: &dependency-unit
-    dependencies:
-        - npm
-        - unit
-
-.only-branches: &only-branches
-    except:
-        - master
-        - develop
-        - tags
-        - triggers
-
-.not-branches: &not-branches
-    only:
-        - master
-        - develop
-        - tags
+        - docker
 
 stages:
-    - setup
     - build
     - compliance-tests
     - security-tests
     - unit-tests
     - quality-tests
 
-nvm:
-    stage: setup
-    <<: *executor-shell
-    script:
-        - nvm install
-
 npm:
     stage: build
-    <<: *executor-shell
-    <<: *nvm-use
+    <<: *executor-docker
+    image: node:alpine
     script:
-        - HASH=( $( md5sum package.json ) )
-        - CACHE=/tmp/${CI_PROJECT_NAME}_${HASH}.tgz
-        - if [ -f $CACHE ]; then
-              tar -xzf $CACHE;
-          else
-              rm -f /tmp/${CI_PROJECT_NAME}_*.tgz &&
-              npm install &&
-              tar -czf $CACHE node_modules;
-          fi
+        - npm install
     artifacts:
         name: "${CI_PROJECT_NAME}_${CI_JOB_ID}_${CI_COMMIT_SHA}"
         expire_in: 10 mins
         paths:
             - node_modules
 
-commitlint-branch:
-    stage: compliance-tests
-    <<: *executor-shell
-    <<: *nvm-use
-    <<: *dependency-npm
-    script:
-        - git fetch origin develop --quiet
-        - git checkout develop --quiet
-        - git reset --hard origin/develop --quiet
-        - git checkout - --quiet
-        - npm run compliance:commitlint
-    <<: *only-branches
-
 commitlint-develop:
     stage: compliance-tests
-    <<: *executor-shell
-    <<: *nvm-use
-    <<: *dependency-npm
+    <<: *executor-docker
+    image: node:alpine
     script:
+        - sed -i "s|http://dl-cdn.alpinelinux.org|https://nexus.nonprod.dwpcloud.uk/repository|" /etc/apk/repositories
+        - apk add --no-cache git
         - git fetch origin master --quiet
         - git checkout master --quiet
         - git reset --hard origin/master --quiet
         - git checkout - --quiet
         - ./node_modules/.bin/commitlint --from=master --to=HEAD
-    <<: *not-branches
 
 eslint:
     stage: compliance-tests
-    <<: *executor-shell
-    <<: *nvm-use
-    <<: *dependency-npm
+    <<: *executor-docker
+    image: node:alpine
     script:
         - npm run compliance:eslint
 
 outdated:
     stage: security-tests
-    <<: *executor-shell
-    <<: *nvm-use
-    <<: *dependency-npm
+    <<: *executor-docker
+    image: node:alpine
     script:
         - npm outdated
     allow_failure: true
 
-nsp:
+audit:
     stage: security-tests
-    <<: *executor-shell
-    <<: *nvm-use
+    <<: *executor-docker
+    image: node:alpine
     script:
-        - npm run security:nsp
+        - npm run security:audit
 
 unit:
     stage: unit-tests
-    <<: *executor-shell
-    <<: *nvm-use
-    <<: *dependency-npm
+    <<: *executor-docker
+    image: node:alpine
     script:
         - npm run unit:test
     artifacts:
@@ -125,20 +68,10 @@ unit:
             - .coverage/unit/lcov.info
     coverage: /^Lines\s*:\s(\d+(?:.\d+)?%)/
 
-sonarjs:
-    stage: quality-tests
-    <<: *executor-shell
-    <<: *nvm-use
-    <<: *dependency-npm
-    script:
-        - npm run quality:sonarjs
-
 sonar-scanner:
     stage: quality-tests
-    <<: *executor-shell
-    <<: *nvm-use
-    <<: *dependency-unit
+    <<: *executor-docker
+    image: $CI_REGISTRY/engineering-practice/sonar-scanner:latest
     script:
         - sed -i.bak -e "s|^SF:\(.*/[[:digit:]]\{1,\}/.*/\)|SF:$( pwd )/|g" .coverage/unit/lcov.info
-        - npm run quality:sonar-scanner
-    <<: *not-branches
+        - sonar-scanner -Dsonar.projectBaseDir=$CI_PROJECT_DIR

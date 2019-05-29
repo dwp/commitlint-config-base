@@ -30,29 +30,30 @@
         "compliance-tests": "npm run compliance:commitlint && npm run compliance:eslint",
         "compliance:commitlint": "commitlint --from=develop --to=HEAD",
         "compliance:eslint": "eslint --ignore-path .gitignore .",
-        "security-tests": "npm run security:outdated && npm run security:nsp",
-        "security:outdated": "npm outdated || true",
-        "security:nsp": "nsp check #",
+        "security-tests": "npm run security:outdated && npm run security:audit",
+        "security:outdated": "npm --registry https://registry.npmjs.com outdated || true",
+        "security:audit": "npm --registry https://registry.npmjs.com audit #",
         "security:snyk": "snyk test -dev",
         "unit-tests": "npm run unit:test",
-        "unit:test": "nyc --report-dir .coverage/unit jasmine JASMINE_CONFIG_PATH=tests/unit/support/jasmine.json",
+        "unit:test": "nyc --report-dir .coverage/unit jasmine --config=tests/unit/support/jasmine.json",
         "quality-tests": "npm run quality:sonarjs",
         "quality:sonarjs": "sonarjs",
         "quality:sonar-scanner": "sonar-scanner"
     },
     "devDependencies": {
-        "@commitlint/cli": "6.0.2",
-        "@dwp/eslint-config-base": "1.0.0",
+        "@commitlint/cli": "7.6.1",
+        "@dwp/eslint-config-base": "2.1.0",
         "@dwp/eslint-config-jasmine": "1.0.0",
         "@dwp/nyc-config-base": "1.0.0",
-        "eslint": "4.15.0",
-        "husky": "0.14.3",
-        "jasmine": "2.8.0",
+        "eslint": "5.16.0",
+        "husky": "2.3.0",
+        "jasmine": "3.4.0",
         "jasmine-spec-reporter": "4.2.1",
-        "lint-staged": "6.0.0",
-        "nsp": "3.1.0",
-        "nyc": "11.4.1",
-        "snyk": "1.68.0",
+        "lint-staged": "8.1.7",
+        "nyc": "14.1.1",
+        "snyk": "1.169.2"
+    },
+    "dependencies": {
         "sonarjs": "1.0.0"
     }
 }
