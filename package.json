@@ -41,7 +41,7 @@
         "quality:sonar-scanner": "sonar-scanner"
     },
     "devDependencies": {
-        "@commitlint/cli": "7.6.1",
+        "@commitlint/cli": "8.0.0",
         "@dwp/eslint-config-base": "2.1.0",
         "@dwp/eslint-config-jasmine": "1.0.0",
         "@dwp/nyc-config-base": "1.0.0",
