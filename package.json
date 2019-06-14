@@ -1,6 +1,6 @@
 {
     "name": "@dwp/commitlint-config-base",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "author": "Adam Moss",
     "license": "ISC",
     "description": "base configuration for commitlint",
