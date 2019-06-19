@@ -7,7 +7,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Features
 
-* **commitlint:** change header max length rule to a warning ([ef474264](https://github.com/dwp/commitlint-config-base/commit/ef474264))
+* **commitlint:** change header max length rule to a warning ([0bfde429](https://github.com/dwp/commitlint-config-base/commit/0bfde429))
 
 <a name="1.0.0"></a>
 # 1.0.0 (2018-01-15)
