@@ -12,7 +12,7 @@ stages:
 npm:
     stage: build
     <<: *executor-docker
-    image: node:alpine@sha256:3db913c274aad57981cb25ed59c0b8f99b554789d3cf2a0530d63cbb739aed16
+    image: node:alpine@sha256:eb0e0412d130003354f8ab17e5832dc9eb0887c3010e642e285545dd8deb488f
     script:
         - npm install
     artifacts:
@@ -24,7 +24,7 @@ npm:
 commitlint-develop:
     stage: compliance-tests
     <<: *executor-docker
-    image: node:alpine@sha256:3db913c274aad57981cb25ed59c0b8f99b554789d3cf2a0530d63cbb739aed16
+    image: node:alpine@sha256:eb0e0412d130003354f8ab17e5832dc9eb0887c3010e642e285545dd8deb488f
     script:
         - sed -i "s|http://dl-cdn.alpinelinux.org|https://nexus.nonprod.dwpcloud.uk/repository|" /etc/apk/repositories
         - apk add --no-cache git
@@ -37,14 +37,14 @@ commitlint-develop:
 eslint:
     stage: compliance-tests
     <<: *executor-docker
-    image: node:alpine@sha256:3db913c274aad57981cb25ed59c0b8f99b554789d3cf2a0530d63cbb739aed16
+    image: node:alpine@sha256:eb0e0412d130003354f8ab17e5832dc9eb0887c3010e642e285545dd8deb488f
     script:
         - npm run compliance:eslint
 
 outdated:
     stage: security-tests
     <<: *executor-docker
-    image: node:alpine@sha256:3db913c274aad57981cb25ed59c0b8f99b554789d3cf2a0530d63cbb739aed16
+    image: node:alpine@sha256:eb0e0412d130003354f8ab17e5832dc9eb0887c3010e642e285545dd8deb488f
     script:
         - npm outdated
     allow_failure: true
@@ -52,14 +52,14 @@ outdated:
 audit:
     stage: security-tests
     <<: *executor-docker
-    image: node:alpine@sha256:3db913c274aad57981cb25ed59c0b8f99b554789d3cf2a0530d63cbb739aed16
+    image: node:alpine@sha256:eb0e0412d130003354f8ab17e5832dc9eb0887c3010e642e285545dd8deb488f
     script:
         - npm run security:audit
 
 unit:
     stage: unit-tests
     <<: *executor-docker
-    image: node:alpine@sha256:3db913c274aad57981cb25ed59c0b8f99b554789d3cf2a0530d63cbb739aed16
+    image: node:alpine@sha256:eb0e0412d130003354f8ab17e5832dc9eb0887c3010e642e285545dd8deb488f
     script:
         - npm run unit:test
     artifacts:
