@@ -51,7 +51,7 @@
         "jasmine-spec-reporter": "4.2.1",
         "lint-staged": "9.0.0",
         "nyc": "14.1.1",
-        "snyk": "1.186.0"
+        "snyk": "1.187.1"
     },
     "dependencies": {
         "sonarjs": "1.0.0"
