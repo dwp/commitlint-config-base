@@ -41,19 +41,17 @@
         "quality:sonar-scanner": "sonar-scanner"
     },
     "devDependencies": {
-        "@commitlint/cli": "8.0.0",
+        "@commitlint/cli": "^8.3.5",
         "@dwp/eslint-config-base": "2.1.0",
         "@dwp/eslint-config-jasmine": "1.0.0",
         "@dwp/nyc-config-base": "1.0.0",
         "eslint": "5.16.0",
+        "eslint-plugin-sonarjs": "^0.5.0",
         "husky": "2.4.1",
         "jasmine": "3.4.0",
         "jasmine-spec-reporter": "4.2.1",
         "lint-staged": "8.2.1",
         "nyc": "14.1.1",
-        "snyk": "1.179.0"
-    },
-    "dependencies": {
-        "sonarjs": "1.0.0"
+        "snyk": "1.274.0"
     }
 }
