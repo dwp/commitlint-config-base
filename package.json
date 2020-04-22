@@ -1,59 +1,51 @@
 {
-    "name": "@dwp/commitlint-config-base",
-    "version": "1.1.0",
-    "author": "Adam Moss",
-    "license": "ISC",
-    "description": "base configuration for commitlint",
-    "keywords": [
-        "config",
-        "shareable-config",
-        "commitlint",
-        "lint"
-    ],
-    "homepage": "https://github.com/dwp/commitlint-config-base",
-    "repository": {
-        "type": "git",
-        "url": "git+ssh://git@github.com:dwp/commitlint-config-base.git"
-    },
-    "bugs": {
-        "url": "https://github.com/dwp/commitlint-config-base/issues"
-    },
-    "files": [
-        "src/**"
-    ],
-    "main": "src/index.js",
-    "scripts": {
-        "precommit": "lint-staged",
-        "commitmsg": "commitlint --edit",
-        "test": "npm run pipeline",
-        "pipeline": "npm run compliance-tests && npm run security-tests && npm run unit-tests && npm run quality-tests",
-        "compliance-tests": "npm run compliance:commitlint && npm run compliance:eslint",
-        "compliance:commitlint": "commitlint --from=develop --to=HEAD",
-        "compliance:eslint": "eslint --ignore-path .gitignore .",
-        "security-tests": "npm run security:outdated && npm run security:audit",
-        "security:outdated": "npm --registry https://registry.npmjs.com outdated || true",
-        "security:audit": "npm --registry https://registry.npmjs.com audit #",
-        "security:snyk": "snyk test -dev",
-        "unit-tests": "npm run unit:test",
-        "unit:test": "nyc --report-dir .coverage/unit jasmine --config=tests/unit/support/jasmine.json",
-        "quality-tests": "npm run quality:sonarjs",
-        "quality:sonarjs": "sonarjs",
-        "quality:sonar-scanner": "sonar-scanner"
-    },
-    "devDependencies": {
-        "@commitlint/cli": "8.0.0",
-        "@dwp/eslint-config-base": "2.1.0",
-        "@dwp/eslint-config-jasmine": "1.0.0",
-        "@dwp/nyc-config-base": "1.0.0",
-        "eslint": "6.0.1",
-        "husky": "3.0.0",
-        "jasmine": "3.4.0",
-        "jasmine-spec-reporter": "4.2.1",
-        "lint-staged": "9.2.0",
-        "nyc": "14.1.1",
-        "snyk": "1.193.2"
-    },
-    "dependencies": {
-        "sonarjs": "1.0.0"
-    }
+  "name": "@dwp/commitlint-config-base",
+  "version": "1.1.0",
+  "author": "Adam Moss",
+  "license": "ISC",
+  "description": "base configuration for commitlint",
+  "keywords": [
+    "config",
+    "shareable-config",
+    "commitlint",
+    "lint"
+  ],
+  "homepage": "https://github.com/dwp/commitlint-config-base",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:dwp/commitlint-config-base.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dwp/commitlint-config-base/issues"
+  },
+  "files": [
+    "src/**"
+  ],
+  "main": "src/index.js",
+  "scripts": {
+    "compliance-tests": "npm run compliance:commits && npm run compliance:lint",
+    "compliance:commits": "commitlint --from=master --to=HEAD",
+    "compliance:lint": "eslint --ignore-path .gitignore .",
+    "pipeline": "npm run compliance-tests && npm run security-tests && npm run tests",
+    "security-tests": "npm run security:outdated && npm run security:audit",
+    "security:audit": "npm audit || true",
+    "security:outdated": "npm outdated || true",
+    "security:snyk": "snyk test -dev",
+    "test": "npm run pipeline",
+    "tests": "npm run tests:unit",
+    "tests:unit": "nyc --report-dir .coverage/unit jasmine --config=tests/unit/support/jasmine.json"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "8.3.5",
+    "@dwp/eslint-config-base": "4.1.0",
+    "@dwp/eslint-config-jasmine": "1.0.0",
+    "@dwp/nyc-config-base": "1.0.0",
+    "eslint": "6.8.0",
+    "husky": "4.2.5",
+    "jasmine": "3.5.0",
+    "jasmine-spec-reporter": "5.0.1",
+    "lint-staged": "10.1.7",
+    "nyc": "15.0.1",
+    "snyk": "1.307.0"
+  }
 }

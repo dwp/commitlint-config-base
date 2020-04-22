@@ -1,2 +1,1 @@
-/* istanbul ignore file */
-module.exports = require( '@dwp/eslint-config-base' );
+module.exports = require('@dwp/eslint-config-base');

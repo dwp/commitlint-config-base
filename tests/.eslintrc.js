@@ -1,1 +1,1 @@
-module.exports = require( '@dwp/eslint-config-jasmine' );
+module.exports = require('@dwp/eslint-config-jasmine');

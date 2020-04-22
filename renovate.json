@@ -1,9 +1,9 @@
 {
-    "assignees": [
-      "adam-moss"
-    ],
-    "prHourlyLimit": 0,
-    "reviewers": [
-      "adam-moss"
-    ]
-  }
+  "assignees": [
+    "adam-moss"
+  ],
+  "prHourlyLimit": 0,
+  "reviewers": [
+    "adam-moss"
+  ]
+}
