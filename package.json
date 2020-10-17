@@ -44,7 +44,7 @@
     "husky": "4.3.0",
     "jasmine": "3.6.2",
     "jasmine-spec-reporter": "5.0.2",
-    "lint-staged": "10.4.1",
+    "lint-staged": "10.4.2",
     "nyc": "15.1.0",
     "snyk": "1.414.1"
   }
