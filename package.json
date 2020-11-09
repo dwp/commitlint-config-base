@@ -35,25 +35,20 @@
         "security:audit": "npm --registry https://registry.npmjs.com audit #",
         "security:snyk": "snyk test -dev",
         "unit-tests": "npm run unit:test",
-        "unit:test": "nyc --report-dir .coverage/unit jasmine --config=tests/unit/support/jasmine.json",
-        "quality-tests": "npm run quality:sonarjs",
-        "quality:sonarjs": "sonarjs",
-        "quality:sonar-scanner": "sonar-scanner"
+        "unit:test": "nyc --report-dir .coverage/unit jasmine --config=tests/unit/support/jasmine.json"
     },
     "devDependencies": {
-        "@commitlint/cli": "8.0.0",
+        "@commitlint/cli": "11.0.0",
         "@dwp/eslint-config-base": "2.1.0",
         "@dwp/eslint-config-jasmine": "1.0.0",
         "@dwp/nyc-config-base": "1.0.0",
         "eslint": "5.16.0",
+        "eslint-plugin-sonarjs": "0.5.0",
         "husky": "2.4.1",
         "jasmine": "3.4.0",
         "jasmine-spec-reporter": "4.2.1",
         "lint-staged": "8.2.1",
         "nyc": "14.1.1",
-        "snyk": "1.179.0"
-    },
-    "dependencies": {
-        "sonarjs": "1.0.0"
+        "snyk": "1.424.4"
     }
 }
