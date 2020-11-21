@@ -36,7 +36,7 @@
     "tests:unit": "nyc --report-dir .coverage/unit jasmine --config=tests/unit/support/jasmine.json"
   },
   "devDependencies": {
-    "@commitlint/cli": "8.3.5",
+    "@commitlint/cli": "11.0.0",
     "@dwp/eslint-config-base": "4.1.0",
     "@dwp/eslint-config-jasmine": "1.0.0",
     "@dwp/nyc-config-base": "1.0.0",
