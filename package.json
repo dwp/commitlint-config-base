@@ -41,7 +41,7 @@
     "@dwp/eslint-config-jasmine": "1.0.0",
     "@dwp/nyc-config-base": "1.0.0",
     "eslint": "7.15.0",
-    "husky": "4.3.5",
+    "husky": "4.3.6",
     "jasmine": "3.6.3",
     "jasmine-spec-reporter": "6.0.0",
     "lint-staged": "10.5.3",
