@@ -3,7 +3,7 @@
     - docker
 
 .node-image: &node-image
-  image: node:12.20.1-alpine@sha256:12048cdfd75d944df35f3144132d9bdeee78015fbd6df765edad1be46599b110
+  image: node:12.21.0-alpine@sha256:de39b4c1af2c10c4f38c9b52f51cd152daa84f868d4af701be79a7a2ba2d8fc2
 
 .install-git: &install-git
   before_script:
