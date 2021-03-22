@@ -20,13 +20,13 @@
 
 .only-branches: &only-branches
   except:
-    - master
+    - main
     - tags
     - triggers
 
 .not-branches: &not-branches
   only:
-    - master
+    - main
     - tags
 
 stages:
@@ -63,9 +63,9 @@ commitlint-branch:
   <<: *install-git
   <<: *dependency-npm
   script:
-    - git fetch origin master --quiet
-    - git checkout master --quiet
-    - git reset --hard origin/master --quiet
+    - git fetch origin main --quiet
+    - git checkout main --quiet
+    - git reset --hard origin/main --quiet
     - git checkout - --quiet
     - npm run compliance:commits
   <<: *only-branches
